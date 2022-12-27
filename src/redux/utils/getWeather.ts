@@ -8,7 +8,7 @@ export const fetchWeather = createAsyncThunk(
   async (city: string, thunkAPI) => {
     try {
       const cityCoordsObj: { lat: number; lon: number }[] = await axios.get(
-        `https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${key}}`
+        `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${key}`
       );
       const cityLat = cityCoordsObj[0].lat;
       const cityLon = cityCoordsObj[0].lon;
