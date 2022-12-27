@@ -15,11 +15,12 @@ export function CityInputForm() {
   function saveCity(e: React.FormEvent) {
     e.preventDefault();
     setCitiesList([...citiesList, cityName]);
-    setTimeout(
-      () => localStorage.setItem("savedCities", JSON.stringify(citiesList)),
-      0
-    );
+    saveToLocalStorage();
     setCityName("");
+  }
+
+  function saveToLocalStorage() {
+    localStorage.setItem("savedCities", JSON.stringify(citiesList));
   }
 
   return (

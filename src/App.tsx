@@ -3,8 +3,18 @@ import { WeatherCards } from "./components/WeatherCards/WeatherCards";
 import { CityInputForm } from "./components/CityInputForm/CityInputForm";
 import { Grid } from "@mui/material";
 import { SavedCityList } from "./components/SavedCityList/SavedCityList";
+import { useEffect, useRef } from "react";
 
 function App() {
+  const cityList = useRef([]);
+
+  useEffect(() => {
+    const citiesFromStorage = localStorage.getItem("savedCities");
+    if (citiesFromStorage) {
+      cityList.current = JSON.parse(citiesFromStorage);
+    }
+  }, []);
+
   return (
     <>
       <CssBaseline enableColorScheme />
@@ -18,7 +28,7 @@ function App() {
               <CityInputForm />
             </Grid>
             <Grid item>
-              <SavedCityList />
+              <SavedCityList cityList={cityList.current} />
             </Grid>
           </Grid>
         </Grid>
