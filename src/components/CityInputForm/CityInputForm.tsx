@@ -1,16 +1,18 @@
-import { Button, Grid, TextField } from "@mui/material";
+import { Alert, Button, Grid, Snackbar, TextField } from "@mui/material";
 import React, { useState } from "react";
 
 import {
   addCity,
   saveCitiesToLocalStorage,
 } from "../../redux/features/cityList/cityListSlice";
-import { useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "../../redux/utils/hooks";
 
 export function CityInputForm() {
   const [cityName, setCityName] = useState("");
+  const [snackBarOpen, setSnackBarOpen] = useState(false);
+  const cityList = useAppSelector((state) => state.cityList.list);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   function handleInput(e: React.FormEvent<HTMLDivElement>) {
     if (e.target) {
@@ -21,9 +23,13 @@ export function CityInputForm() {
 
   function saveCity(e: React.FormEvent) {
     e.preventDefault();
-    dispatch(addCity(cityName));
-    dispatch(saveCitiesToLocalStorage());
-    setCityName("");
+    if (cityList.includes(cityName)) {
+      setSnackBarOpen(true);
+    } else {
+      dispatch(addCity(cityName));
+      dispatch(saveCitiesToLocalStorage());
+      setCityName("");
+    }
   }
 
   return (
@@ -44,6 +50,19 @@ export function CityInputForm() {
           </Button>
         </Grid>
       </Grid>
+      <Snackbar
+        open={snackBarOpen}
+        autoHideDuration={6000}
+        onClose={() => setSnackBarOpen(false)}
+      >
+        <Alert
+          onClose={() => setSnackBarOpen(false)}
+          severity="error"
+          sx={{ width: "100%" }}
+        >
+          City already in the list!
+        </Alert>
+      </Snackbar>
     </form>
   );
 }
