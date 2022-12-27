@@ -28,7 +28,7 @@ function App() {
               <CityInputForm />
             </Grid>
             <Grid item>
-              <SavedCityList cityList={cityList.current} />
+              <SavedCityList />
             </Grid>
           </Grid>
         </Grid>
