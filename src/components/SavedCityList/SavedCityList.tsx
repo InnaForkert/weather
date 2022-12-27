@@ -7,6 +7,7 @@ import {
   addCitiesFromLocalStorage,
 } from "../../redux/features/cityList/cityListSlice";
 import { useDispatch, useSelector } from "react-redux";
+
 import { useEffect } from "react";
 
 export function SavedCityList() {

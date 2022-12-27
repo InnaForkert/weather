@@ -1,9 +1,16 @@
 import { Button, Grid, TextField } from "@mui/material";
 import React, { useState } from "react";
 
+import {
+  addCity,
+  saveCitiesToLocalStorage,
+} from "../../redux/features/cityList/cityListSlice";
+import { useDispatch } from "react-redux";
+
 export function CityInputForm() {
   const [cityName, setCityName] = useState("");
-  const [citiesList, setCitiesList] = useState<string[]>([]);
+
+  const dispatch = useDispatch();
 
   function handleInput(e: React.FormEvent<HTMLDivElement>) {
     if (e.target) {
@@ -14,13 +21,9 @@ export function CityInputForm() {
 
   function saveCity(e: React.FormEvent) {
     e.preventDefault();
-    setCitiesList([...citiesList, cityName]);
-    saveToLocalStorage();
+    dispatch(addCity(cityName));
+    dispatch(saveCitiesToLocalStorage());
     setCityName("");
-  }
-
-  function saveToLocalStorage() {
-    localStorage.setItem("savedCities", JSON.stringify(citiesList));
   }
 
   return (
