@@ -19,15 +19,20 @@ function App() {
   useEffect(() => {
     const citiesFromStorage = localStorage.getItem("savedCities");
     if (citiesFromStorage) {
-      dispatch(addCitiesFromLocalStorage);
+      const parsedCities = JSON.parse(citiesFromStorage);
+      dispatch(addCitiesFromLocalStorage(parsedCities));
+      parsedCities.forEach((city: string) => {
+        dispatch(fetchWeather(city));
+      });
+      console.log("added cities from storage");
     }
-  }, [dispatch, cityList]);
+  }, [dispatch]);
 
-  useEffect(() => {
-    cityList.forEach((city) => {
-      dispatch(fetchWeather(city));
-    });
-  }, [cityList, dispatch]);
+  // useEffect(() => {
+  //   cityList.forEach((city) => {
+  //     dispatch(fetchWeather(city));
+  //   });
+  // }, [cityList, dispatch]);
 
   return (
     <>

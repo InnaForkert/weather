@@ -6,6 +6,7 @@ import {
   saveCitiesToLocalStorage,
 } from "../../redux/features/cityList/cityListSlice";
 import { useAppSelector, useAppDispatch } from "../../redux/utils/hooks";
+import { fetchWeather } from "../../redux/utils/getWeather";
 
 export function CityInputForm() {
   const [cityName, setCityName] = useState("");
@@ -28,6 +29,7 @@ export function CityInputForm() {
     } else {
       dispatch(addCity(cityName));
       dispatch(saveCitiesToLocalStorage());
+      dispatch(fetchWeather(cityName));
       setCityName("");
     }
   }
