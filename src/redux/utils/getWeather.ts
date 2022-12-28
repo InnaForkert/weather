@@ -11,14 +11,16 @@ export const fetchWeather = createAsyncThunk(
         await axios.get(
           `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=2&appid=${key}`
         );
-      console.log(cityCoordsObj.data);
       const cityLat = cityCoordsObj.data[0].lat;
       const cityLon = cityCoordsObj.data[0].lon;
 
       const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${cityLat}&lon=${cityLon}&appid=${key}`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${cityLat}&lon=${cityLon}&appid=${key}&&units=metric`
       );
-      return response.data;
+
+      const data = response.data;
+      data.name = city;
+      return data;
     } catch (e) {
       if (e instanceof Error) {
         return thunkAPI.rejectWithValue(e.message);

@@ -1,21 +1,24 @@
 import { Grid } from "@mui/material";
 import { nanoid } from "nanoid";
-
-import { useEffect } from "react";
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
 import { WeatherCard } from "../WeatherCard/WeatherCard";
-import { fetchWeather } from "../../redux/utils/getWeather";
-import { useAppSelector, useAppDispatch } from "../../redux/utils/hooks";
+import { useAppSelector } from "../../redux/utils/hooks";
 
 export function WeatherCards() {
   const cityList = useAppSelector((state) => state.cityList.list);
-  const dispatch = useAppDispatch();
+  const { isLoading, values } = useAppSelector((state) => state.weather);
 
   return (
-    <Grid container spacing={5}>
-      {cityList.map((el) => (
-        <WeatherCard key={nanoid()} cityName={el} />
+    <Grid2 container spacing={4}>
+      {cityList.map((el, i) => (
+        <WeatherCard
+          key={nanoid()}
+          cityName={el}
+          isLoading={isLoading}
+          value={values[i]}
+        />
       ))}
-    </Grid>
+    </Grid2>
   );
 }

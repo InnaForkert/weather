@@ -1,8 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchWeather } from "../../utils/getWeather";
 
+export interface WeatherObj {
+  weather: [{ icon: string }];
+  name: string;
+  main: {
+    temp: number;
+  };
+}
+
 export interface Weather {
-  values: object[];
+  values: WeatherObj[];
   isLoading: boolean;
   error: unknown;
 }
@@ -25,7 +33,6 @@ export const weatherSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       state.values.push(action.payload);
-      console.log("full");
     });
     builder.addCase(fetchWeather.rejected, (state, action) => {
       state.isLoading = false;
