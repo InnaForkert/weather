@@ -1,7 +1,7 @@
 {
   "name": "codica-test",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "homepage": "https://innaforkert.github.io/codica-test",
   "dependencies": {
     "@emotion/react": "^11.10.5",
