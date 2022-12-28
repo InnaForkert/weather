@@ -22,7 +22,7 @@ export function WeatherCard({
   }
 
   return (
-    <Grid2 xs={6} md={4}>
+    <Grid2 xs={12} md={4}>
       <Card>
         <Grid2
           container
