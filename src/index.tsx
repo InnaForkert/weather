@@ -6,7 +6,6 @@ import reportWebVitals from "./reportWebVitals";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { SideMenu } from "./pages/SideMenu";
 import { ErrorPage } from "./pages/ErrorPage";
 import { Details } from "./pages/Details";
 import { WeatherCards } from "./components/WeatherCards/WeatherCards";
@@ -18,11 +17,11 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/details/:cityId",
+        path: "details/:cityId",
         element: <Details />,
       },
       {
-        path: "/",
+        path: "",
         element: <WeatherCards />,
       },
     ],

@@ -1,16 +1,16 @@
 import { useEffect } from "react";
+
 import { useAppDispatch, useAppSelector } from "./redux/utils/hooks";
 import { addCitiesFromLocalStorage } from "./redux/features/cityList/cityListSlice";
 import { fetchWeather } from "./redux/utils/getWeather";
-import { Outlet, Route, Routes } from "react-router-dom";
-import { SideMenu } from "./pages/SideMenu";
-import { Details } from "./pages/Details";
+
+import { Outlet } from "react-router-dom";
+
 import CssBaseline from "@mui/material/CssBaseline";
-import { WeatherCards } from "./components/WeatherCards/WeatherCards";
-import { CityInputForm } from "./components/CityInputForm/CityInputForm";
-import { Grid } from "@mui/material";
-import { SavedCityList } from "./components/SavedCityList/SavedCityList";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+
+import { CityInputForm } from "./components/CityInputForm/CityInputForm";
+import { SavedCityList } from "./components/SavedCityList/SavedCityList";
 
 function App() {
   const cityList = useAppSelector((state) => state.cityList.list);
@@ -33,10 +33,10 @@ function App() {
     <>
       <CssBaseline enableColorScheme />
       <Grid2 container spacing={5}>
-        <Grid2 xs={6} md={9}>
+        <Grid2 xs={7} md={9}>
           <Outlet />
         </Grid2>
-        <Grid2 xs={6} md={3}>
+        <Grid2 xs={5} md={3}>
           <Grid2 container direction="column">
             <Grid2>
               <CityInputForm />

@@ -1,14 +1,10 @@
-import { Card, Grid, Typography } from "@mui/material";
+import { Card, Typography } from "@mui/material";
 import { WeatherObj } from "../../redux/features/weather/weatherSlice";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
 export function WeatherCard({
-  cityName,
-  isLoading,
   value: weather,
 }: {
-  cityName: string;
-  isLoading: boolean;
   value: WeatherObj | undefined;
 }) {
   let imgUrl = "";
@@ -22,27 +18,25 @@ export function WeatherCard({
   }
 
   return (
-    <Grid2 xs={12} md={4}>
-      <Card>
-        <Grid2
-          container
-          alignItems="center"
-          spacing={2}
-          justifyContent="space-around"
-        >
-          <Grid2>
-            <img src={imgUrl} alt="" />
-          </Grid2>
-          <Grid2>
-            <Typography variant="h4" component="p">
-              {temp}°C
-            </Typography>
-          </Grid2>
+    <Card>
+      <Grid2
+        container
+        alignItems="center"
+        spacing={2}
+        justifyContent="space-around"
+      >
+        <Grid2>
+          <img src={imgUrl} alt="" />
         </Grid2>
-        <Typography variant="h5" component="p" textAlign="center" pb={3}>
-          {city}
-        </Typography>
-      </Card>
-    </Grid2>
+        <Grid2>
+          <Typography variant="h4" component="p">
+            {temp}°C
+          </Typography>
+        </Grid2>
+      </Grid2>
+      <Typography variant="h5" component="p" textAlign="center" pb={3}>
+        {city}
+      </Typography>
+    </Card>
   );
 }

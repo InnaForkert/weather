@@ -1,26 +1,27 @@
-import { Grid } from "@mui/material";
 import { nanoid } from "nanoid";
+
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
-import { WeatherCard } from "../WeatherCard/WeatherCard";
 import { useAppSelector } from "../../redux/utils/hooks";
-import { Link } from "react-router-dom";
+
+import { NavLink } from "react-router-dom";
+
+import { WeatherCard } from "../WeatherCard/WeatherCard";
+import { Box } from "@mui/system";
+import { Link } from "@mui/material";
 
 export function WeatherCards() {
   const cityList = useAppSelector((state) => state.cityList.list);
-  const { isLoading, values } = useAppSelector((state) => state.weather);
+  const { values } = useAppSelector((state) => state.weather);
 
   return (
-    <Grid2 container spacing={4}>
+    <Grid2 container spacing={2}>
       {cityList.map((el, i) => (
-        <Link to={"details/el"}>
-          <WeatherCard
-            key={nanoid()}
-            cityName={el}
-            isLoading={isLoading}
-            value={values[i]}
-          />
-        </Link>
+        <Grid2 xs={12} md={6} lg={4} key={nanoid()}>
+          <Link underline="none" component={NavLink} to={`details/${el}`}>
+            <WeatherCard value={values[i]} />
+          </Link>
+        </Grid2>
       ))}
     </Grid2>
   );
