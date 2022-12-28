@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "./redux/utils/hooks";
 import { addCitiesFromLocalStorage } from "./redux/features/cityList/cityListSlice";
 import { fetchWeather } from "./redux/utils/getWeather";
 
-import { Outlet } from "react-router-dom";
+import { HashRouter, Outlet } from "react-router-dom";
 
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
@@ -30,7 +30,7 @@ function App() {
   }, [cityList, dispatch]);
 
   return (
-    <>
+    <HashRouter basename="/">
       <CssBaseline enableColorScheme />
       <Grid2 container spacing={5}>
         <Grid2 xs={7} md={9}>
@@ -47,7 +47,7 @@ function App() {
           </Grid2>
         </Grid2>
       </Grid2>
-    </>
+    </HashRouter>
   );
 }
 
