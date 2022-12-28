@@ -25,6 +25,7 @@ export const weatherSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       state.values.push(action.payload);
+      console.log("full");
     });
     builder.addCase(fetchWeather.rejected, (state, action) => {
       state.isLoading = false;

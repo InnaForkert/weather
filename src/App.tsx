@@ -3,17 +3,27 @@ import { WeatherCards } from "./components/WeatherCards/WeatherCards";
 import { CityInputForm } from "./components/CityInputForm/CityInputForm";
 import { Grid } from "@mui/material";
 import { SavedCityList } from "./components/SavedCityList/SavedCityList";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "./redux/utils/hooks";
+import { addCitiesFromLocalStorage } from "./redux/features/cityList/cityListSlice";
+import { fetchWeather } from "./redux/utils/getWeather";
 
 function App() {
-  const cityList = useRef([]);
+  const cityList = useAppSelector((state) => state.cityList.list);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const citiesFromStorage = localStorage.getItem("savedCities");
     if (citiesFromStorage) {
-      cityList.current = JSON.parse(citiesFromStorage);
+      dispatch(addCitiesFromLocalStorage);
     }
-  }, []);
+  }, [dispatch, cityList]);
+
+  useEffect(() => {
+    cityList.forEach((city) => {
+      dispatch(fetchWeather(city));
+    });
+  }, [cityList, dispatch]);
 
   return (
     <>

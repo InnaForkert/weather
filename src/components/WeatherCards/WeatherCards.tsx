@@ -11,12 +11,6 @@ export function WeatherCards() {
   const cityList = useAppSelector((state) => state.cityList.list);
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    cityList.forEach((city) => {
-      dispatch(fetchWeather(city));
-    });
-  }, [dispatch, cityList]);
-
   return (
     <Grid container spacing={5}>
       {cityList.map((el) => (

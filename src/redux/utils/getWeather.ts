@@ -7,11 +7,13 @@ export const fetchWeather = createAsyncThunk(
   "weather/fetch",
   async (city: string, thunkAPI) => {
     try {
-      const cityCoordsObj: { lat: number; lon: number }[] = await axios.get(
-        `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${key}`
-      );
-      const cityLat = cityCoordsObj[0].lat;
-      const cityLon = cityCoordsObj[0].lon;
+      const cityCoordsObj: { data: { lat: string; lon: string }[] } =
+        await axios.get(
+          `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=2&appid=${key}`
+        );
+      console.log(cityCoordsObj.data);
+      const cityLat = cityCoordsObj.data[0].lat;
+      const cityLon = cityCoordsObj.data[0].lon;
 
       const response = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?lat=${cityLat}&lon=${cityLon}&appid=${key}`
@@ -21,6 +23,7 @@ export const fetchWeather = createAsyncThunk(
       if (e instanceof Error) {
         return thunkAPI.rejectWithValue(e.message);
       }
+      console.log("unknown error");
     }
   }
 );
