@@ -42,22 +42,31 @@ export function Details() {
 
   return (
     <Card>
-      <Grid2 container>
-        <Grid2>
-          <Typography>{cityId}</Typography>
-          <Typography>Temperature: {temp}°C</Typography>
-          <Typography>Feels like: {feelsLike}°C</Typography>
-          <Typography>{description}</Typography>
+      <Grid2 container alignItems="center">
+        <Grid2 sm={12} md={5}>
+          <Grid2 container alignItems="center">
+            <Typography variant="h3" component="h1" mb={2}>
+              {cityId}
+            </Typography>
+            <img src={imgUrl} alt="" />
+          </Grid2>
+          <Typography variant="h5" component="p" mb={1}>
+            Temperature: {temp}°C
+          </Typography>
+          <Typography variant="h5" component="p" mb={1}>
+            Feels like: {feelsLike}°C
+          </Typography>
+          <Typography fontStyle="italic" mb={2}>
+            {description}
+          </Typography>
+          <Typography>Humidity: {humidity}%</Typography>
+          <Typography>Pressure: {pressure} mb</Typography>
+          <Typography>Wind speed: {windSpeed} m/s</Typography>
         </Grid2>
-        <Grid2>
-          <img src={imgUrl} alt="" />
+        <Grid2 sm={11} md={7}>
+          <HourlyChart weather={hourlyWeather} />
         </Grid2>
       </Grid2>
-      <Typography>Humidity: {humidity}%</Typography>
-      <Typography>Pressure: {pressure} mb</Typography>
-      <Typography>Wind speed: {windSpeed} m/s</Typography>
-      <Divider orientation="vertical" component="div" />
-      <HourlyChart weather={hourlyWeather} />
     </Card>
   );
 }
