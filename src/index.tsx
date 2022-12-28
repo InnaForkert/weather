@@ -12,16 +12,16 @@ import { WeatherCards } from "./components/WeatherCards/WeatherCards";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/codica-test/",
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/details/:cityId",
+        path: "/codica-test/details/:cityId",
         element: <Details />,
       },
       {
-        path: "/",
+        path: "/codica-test/",
         element: <WeatherCards />,
       },
     ],
