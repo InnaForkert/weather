@@ -7,7 +7,6 @@ import { useAppSelector } from "../../redux/utils/hooks";
 import { NavLink } from "react-router-dom";
 
 import { WeatherCard } from "../WeatherCard/WeatherCard";
-import { Box } from "@mui/system";
 import { Link } from "@mui/material";
 
 export function WeatherCards() {
