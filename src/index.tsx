@@ -5,23 +5,23 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import { ErrorPage } from "./pages/ErrorPage";
 import { Details } from "./pages/Details";
 import { WeatherCards } from "./components/WeatherCards/WeatherCards";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
-    path: "/codica-test/",
+    path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/codica-test/details/:cityId",
+        path: "details/:cityId",
         element: <Details />,
       },
       {
-        path: "/codica-test/",
+        path: "/",
         element: <WeatherCards />,
       },
     ],
