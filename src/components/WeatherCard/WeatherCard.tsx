@@ -1,4 +1,4 @@
-import { Card, Typography } from "@mui/material";
+import { Card, Divider, Typography } from "@mui/material";
 import { WeatherObj } from "../../redux/features/weather/weatherSlice";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
@@ -28,6 +28,7 @@ export function WeatherCard({
         <Grid2>
           <img src={imgUrl} alt="" />
         </Grid2>
+
         <Grid2>
           <Typography variant="h4" component="p">
             {temp}°C

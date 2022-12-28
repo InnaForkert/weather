@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/utils/hooks";
 import { fetchHourlyForecast } from "../redux/utils/getWeather";
-import { Card, Typography } from "@mui/material";
+import { Card, Container, Divider, Typography } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { HourlyChart } from "../components/HourlyChart/HourlyChart";
 
@@ -56,6 +56,7 @@ export function Details() {
       <Typography>Humidity: {humidity}%</Typography>
       <Typography>Pressure: {pressure} mb</Typography>
       <Typography>Wind speed: {windSpeed} m/s</Typography>
+      <Divider orientation="vertical" component="div" />
       <HourlyChart weather={hourlyWeather} />
     </Card>
   );

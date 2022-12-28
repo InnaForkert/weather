@@ -19,7 +19,9 @@ export interface WeatherObj {
   };
 }
 
-export interface CurrentWeatherObj {}
+export interface CurrentWeatherObj {
+  list: { dt_txt: string; main: { temp: number } }[];
+}
 
 export interface Weather {
   values: WeatherObj[];
@@ -32,7 +34,7 @@ const initialState: Weather = {
   values: [],
   isLoading: false,
   error: null,
-  currentWeather: {},
+  currentWeather: { list: [] },
 };
 
 export const weatherSlice = createSlice({
