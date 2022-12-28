@@ -17,11 +17,11 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "details/:cityId",
+        path: "/codica-test/details/:cityId",
         element: <Details />,
       },
       {
-        path: "",
+        path: "/codica-test/",
         element: <WeatherCards />,
       },
     ],
