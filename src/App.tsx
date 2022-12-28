@@ -30,7 +30,7 @@ function App() {
   }, [cityList, dispatch]);
 
   return (
-    <HashRouter basename="/">
+    <HashRouter basename="/codica-test/">
       <CssBaseline enableColorScheme />
       <Grid2 container spacing={5}>
         <Grid2 xs={7} md={9}>
