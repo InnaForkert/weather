@@ -1,4 +1,4 @@
-import { Card, Divider, Typography } from "@mui/material";
+import { Card, Typography } from "@mui/material";
 import { WeatherObj } from "../../redux/features/weather/weatherSlice";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
