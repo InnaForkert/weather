@@ -5,11 +5,9 @@ import { addCity } from "../../redux/features/cityList/cityListSlice";
 import { useAppSelector, useAppDispatch } from "../../redux/utils/hooks";
 import { fetchWeather } from "../../redux/utils/getWeather";
 import Notiflix from "notiflix";
-import { stat } from "fs";
 
 export function CityInputForm() {
   const [cityName, setCityName] = useState("");
-  const cityList = useAppSelector((state) => state.cityList.list);
   const values = useAppSelector((state) => state.weather.values);
 
   const dispatch = useAppDispatch();
