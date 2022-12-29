@@ -6,9 +6,9 @@ import reportWebVitals from "./reportWebVitals";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import { createHashRouter, RouterProvider } from "react-router-dom";
-import { ErrorPage } from "./pages/ErrorPage";
-import { Details } from "./pages/Details";
-import { WeatherCards } from "./components/WeatherCards/WeatherCards";
+import { ErrorPage } from "./components/ErrorPage";
+import { Details } from "./components/Details";
+import { WeatherCards } from "./components/WeatherCards";
 
 const router = createHashRouter([
   {

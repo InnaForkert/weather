@@ -9,7 +9,7 @@ import { Outlet } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
-import { CityInputForm } from "./components/CityInputForm/CityInputForm";
+import { CityInputForm } from "./components/CityInputForm";
 
 function App() {
   const dispatch = useAppDispatch();

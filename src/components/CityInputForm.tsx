@@ -1,9 +1,9 @@
 import { Button, Grid, Paper, TextField } from "@mui/material";
 import React, { useState } from "react";
 
-import { addCity } from "../../redux/features/cityList/cityListSlice";
-import { useAppSelector, useAppDispatch } from "../../redux/utils/hooks";
-import { fetchWeather } from "../../redux/utils/getWeather";
+import { addCity } from "../redux/features/cityList/cityListSlice";
+import { useAppSelector, useAppDispatch } from "../redux/utils/hooks";
+import { fetchWeather } from "../redux/utils/getWeather";
 import Notiflix from "notiflix";
 
 export function CityInputForm() {
