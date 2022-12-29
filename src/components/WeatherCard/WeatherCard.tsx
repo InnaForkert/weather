@@ -63,7 +63,7 @@ export function WeatherCard({ cityName }: { cityName: string }) {
           </Typography>
         </Grid2>
         <Typography variant="h5" component="p" textAlign="center" ml={2}>
-          {cityName[0].toUpperCase() + cityName.slice(1).toLowerCase()}
+          {cityName}
         </Typography>
       </Grid2>
       <Grid2 container justifyContent="space-around">

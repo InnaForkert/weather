@@ -55,7 +55,7 @@ export function Details() {
           <Grid2 sm={12} md={5}>
             <Grid2 container alignItems="center">
               <Typography variant="h3" component="h1" mb={2}>
-                {cityName}
+                {cityId}
               </Typography>
               <img src={imgUrl} alt="" />
             </Grid2>

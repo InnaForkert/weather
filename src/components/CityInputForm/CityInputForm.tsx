@@ -18,18 +18,27 @@ export function CityInputForm() {
   function handleInput(e: React.FormEvent<HTMLDivElement>) {
     if (e.target) {
       const target = e.target as HTMLInputElement;
-      setCityName(target.value.toLowerCase());
+      setCityName(target.value);
     }
   }
 
   function saveCity(e: React.FormEvent) {
     e.preventDefault();
-    if (cityList.includes(cityName)) {
+    const cityCapitalized =
+      cityName.length > 1
+        ? cityName.toLowerCase()[0].toUpperCase() +
+          cityName
+            .toLowerCase()
+            .slice(1)
+            .replace(/(\s.)/g, (letter) => letter.toUpperCase())
+        : cityName;
+
+    if (cityList.includes(cityCapitalized)) {
       setSnackBarOpen(true);
     } else {
-      dispatch(addCity(cityName));
+      dispatch(addCity(cityCapitalized));
       dispatch(saveCitiesToLocalStorage());
-      dispatch(fetchWeather(cityName));
+      dispatch(fetchWeather(cityCapitalized));
       setCityName("");
     }
   }
