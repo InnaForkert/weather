@@ -10,7 +10,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
 import { CityInputForm } from "./components/CityInputForm/CityInputForm";
-import { SavedCityList } from "./components/SavedCityList/SavedCityList";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -34,14 +33,7 @@ function App() {
           <Outlet />
         </Grid2>
         <Grid2 xs={5} md={3}>
-          <Grid2 container direction="column">
-            <Grid2>
-              <CityInputForm />
-            </Grid2>
-            <Grid2>
-              <SavedCityList />
-            </Grid2>
-          </Grid2>
+          <CityInputForm />
         </Grid2>
       </Grid2>
     </>

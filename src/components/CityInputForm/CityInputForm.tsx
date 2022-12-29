@@ -1,4 +1,4 @@
-import { Alert, Button, Grid, Snackbar, TextField } from "@mui/material";
+import { Alert, Button, Grid, Paper, Snackbar, TextField } from "@mui/material";
 import React, { useState } from "react";
 
 import {
@@ -44,36 +44,38 @@ export function CityInputForm() {
   }
 
   return (
-    <form onSubmit={(e) => saveCity(e)}>
-      <Grid container direction="column" spacing={2}>
-        <Grid item>
-          <TextField
-            id="outlined-basic"
-            label="Enter city name"
-            variant="outlined"
-            value={cityName}
-            onInput={(e) => handleInput(e)}
-          />
+    <Paper sx={{ position: "fixed", right: "5%", top: "11%" }} elevation={3}>
+      <form onSubmit={(e) => saveCity(e)}>
+        <Grid container direction="column" spacing={2} p={2}>
+          <Grid item>
+            <TextField
+              id="outlined-basic"
+              label="Enter city name"
+              variant="outlined"
+              value={cityName}
+              onInput={(e) => handleInput(e)}
+            />
+          </Grid>
+          <Grid item>
+            <Button variant="contained" type="submit">
+              Save
+            </Button>
+          </Grid>
         </Grid>
-        <Grid item>
-          <Button variant="contained" type="submit">
-            Save
-          </Button>
-        </Grid>
-      </Grid>
-      <Snackbar
-        open={snackBarOpen}
-        autoHideDuration={6000}
-        onClose={() => setSnackBarOpen(false)}
-      >
-        <Alert
+        <Snackbar
+          open={snackBarOpen}
+          autoHideDuration={6000}
           onClose={() => setSnackBarOpen(false)}
-          severity="error"
-          sx={{ width: "100%" }}
         >
-          City already in the list!
-        </Alert>
-      </Snackbar>
-    </form>
+          <Alert
+            onClose={() => setSnackBarOpen(false)}
+            severity="error"
+            sx={{ width: "100%" }}
+          >
+            City already in the list!
+          </Alert>
+        </Snackbar>
+      </form>
+    </Paper>
   );
 }
