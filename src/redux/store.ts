@@ -1,13 +1,23 @@
-import { configureStore } from "@reduxjs/toolkit";
+import {
+  PreloadedState,
+  combineReducers,
+  configureStore,
+} from "@reduxjs/toolkit";
 import cityListReducer from "./features/cityList/cityListSlice";
 import weatherReducer from "./features/weather/weatherSlice";
 
-export const store = configureStore({
-  reducer: {
-    cityList: cityListReducer,
-    weather: weatherReducer,
-  },
+const rootReducer = combineReducers({
+  cityList: cityListReducer,
+  weather: weatherReducer,
 });
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export const store = (preloadedState?: PreloadedState<RootState>) => {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState,
+  });
+};
+
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppStore = ReturnType<typeof store>;
+export type AppDispatch = AppStore["dispatch"];

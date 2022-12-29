@@ -32,7 +32,6 @@ export function WeatherCard({ cityName }: { cityName: string }) {
   }
 
   function onDelete() {
-    console.log("hi");
     dispatch(removeCityFromList(cityName));
     dispatch(removeCityFromValues(cityName));
   }
