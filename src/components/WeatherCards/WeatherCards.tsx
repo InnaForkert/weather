@@ -4,21 +4,16 @@ import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
 import { useAppSelector } from "../../redux/utils/hooks";
 
-import { NavLink } from "react-router-dom";
-
 import { WeatherCard } from "../WeatherCard/WeatherCard";
-import { Link } from "@mui/material";
 
 export function WeatherCards() {
   const cityList = useAppSelector((state) => state.cityList.list);
 
   return (
     <Grid2 container spacing={2}>
-      {cityList.map((el, i) => (
+      {cityList.map((el) => (
         <Grid2 xs={12} md={6} lg={4} key={nanoid()}>
-          <Link underline="none" component={NavLink} to={`details/${el}`}>
-            <WeatherCard cityName={el} />
-          </Link>
+          <WeatherCard cityName={el} />
         </Grid2>
       ))}
     </Grid2>

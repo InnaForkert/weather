@@ -20,8 +20,6 @@ export function Details() {
     }
   }, [currentCityWeather, dispatch]);
 
-  console.log(currentCityWeather);
-
   let imgUrl = "";
   let temp = 0;
   let feelsLike = 0;

@@ -48,6 +48,7 @@ export const weatherSlice = createSlice({
     builder.addCase(fetchWeather.fulfilled, (state, action) => {
       state.isLoading = false;
       state.error = null;
+      state.values.filter((el) => el.name !== action.payload.name);
       state.values.push(action.payload);
     });
     builder.addCase(fetchWeather.rejected, (state, action) => {

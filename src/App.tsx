@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { useAppDispatch, useAppSelector } from "./redux/utils/hooks";
+import { useAppDispatch } from "./redux/utils/hooks";
 import { addCitiesFromLocalStorage } from "./redux/features/cityList/cityListSlice";
 import { fetchWeather } from "./redux/utils/getWeather";
 
@@ -13,7 +13,6 @@ import { CityInputForm } from "./components/CityInputForm/CityInputForm";
 import { SavedCityList } from "./components/SavedCityList/SavedCityList";
 
 function App() {
-  const cityList = useAppSelector((state) => state.cityList.list);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -24,15 +23,8 @@ function App() {
       parsedCities.forEach((city: string) => {
         dispatch(fetchWeather(city));
       });
-      console.log("added cities from storage");
     }
   }, [dispatch]);
-
-  // useEffect(() => {
-  //   cityList.forEach((city) => {
-  //     dispatch(fetchWeather(city));
-  //   });
-  // }, [cityList, dispatch]);
 
   return (
     <>

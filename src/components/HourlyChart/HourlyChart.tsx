@@ -10,7 +10,6 @@ import {
 } from "recharts";
 
 export function HourlyChart({ weather }: { weather: CurrentWeatherObj }) {
-  console.log(weather);
   const oneDay = weather.list.filter((_, i) => i < 8);
 
   const data = oneDay.map((el) => {
@@ -20,7 +19,6 @@ export function HourlyChart({ weather }: { weather: CurrentWeatherObj }) {
       temperature: el.main.temp,
     };
   });
-  console.log(data);
 
   return (
     <ResponsiveContainer width={"99%"} height={300}>
