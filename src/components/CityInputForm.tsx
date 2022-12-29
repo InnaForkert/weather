@@ -55,7 +55,6 @@ export function CityInputForm() {
               variant="outlined"
               value={cityName}
               onInput={(e) => handleInput(e)}
-              role="input"
             />
           </Grid>
           <Grid item>
