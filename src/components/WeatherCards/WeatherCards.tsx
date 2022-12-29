@@ -8,14 +8,19 @@ import { WeatherCard } from "../WeatherCard/WeatherCard";
 
 export function WeatherCards() {
   const cityList = useAppSelector((state) => state.cityList.list);
+  const values = useAppSelector((state) => state.weather.values);
 
   return (
     <Grid2 container spacing={2}>
-      {cityList.map((el) => (
-        <Grid2 xs={12} md={6} lg={4} key={nanoid()}>
-          <WeatherCard cityName={el} />
-        </Grid2>
-      ))}
+      {cityList.map((el) => {
+        if (values.find((value) => value.name === el)) {
+          return (
+            <Grid2 xs={12} md={6} lg={4} key={nanoid()}>
+              <WeatherCard cityName={el} />
+            </Grid2>
+          );
+        }
+      })}
     </Grid2>
   );
 }

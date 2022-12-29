@@ -1,14 +1,16 @@
-import { Alert, Button, Grid, Paper, Snackbar, TextField } from "@mui/material";
+import { Button, Grid, Paper, TextField } from "@mui/material";
 import React, { useState } from "react";
 
 import { addCity } from "../../redux/features/cityList/cityListSlice";
 import { useAppSelector, useAppDispatch } from "../../redux/utils/hooks";
 import { fetchWeather } from "../../redux/utils/getWeather";
+import Notiflix from "notiflix";
+import { stat } from "fs";
 
 export function CityInputForm() {
   const [cityName, setCityName] = useState("");
-  const [snackBarOpen, setSnackBarOpen] = useState(false);
   const cityList = useAppSelector((state) => state.cityList.list);
+  const values = useAppSelector((state) => state.weather.values);
 
   const dispatch = useAppDispatch();
 
@@ -21,6 +23,10 @@ export function CityInputForm() {
 
   function saveCity(e: React.FormEvent) {
     e.preventDefault();
+    if (cityName.length === 0) {
+      Notiflix.Notify.failure("Enter Something!");
+      return;
+    }
     const cityCapitalized =
       cityName.length > 1
         ? cityName.toLowerCase()[0].toUpperCase() +
@@ -30,8 +36,8 @@ export function CityInputForm() {
             .replace(/(\s.)/g, (letter) => letter.toUpperCase())
         : cityName;
 
-    if (cityList.includes(cityCapitalized)) {
-      setSnackBarOpen(true);
+    if (values.find((value) => value.name === cityCapitalized)) {
+      Notiflix.Notify.failure("City already in the list!");
     } else {
       dispatch(addCity(cityCapitalized));
       dispatch(fetchWeather(cityCapitalized));
@@ -58,19 +64,6 @@ export function CityInputForm() {
             </Button>
           </Grid>
         </Grid>
-        <Snackbar
-          open={snackBarOpen}
-          autoHideDuration={6000}
-          onClose={() => setSnackBarOpen(false)}
-        >
-          <Alert
-            onClose={() => setSnackBarOpen(false)}
-            severity="error"
-            sx={{ width: "100%" }}
-          >
-            City already in the list!
-          </Alert>
-        </Snackbar>
       </form>
     </Paper>
   );

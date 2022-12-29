@@ -47,46 +47,44 @@ export function WeatherCard({ cityName }: { cityName: string }) {
 
   return (
     <>
-      {imgUrl && (
-        <Card>
-          <Grid2
-            onClick={handleCardClick}
-            container
-            alignItems="center"
-            spacing={2}
-            flexDirection="column"
-          >
-            <Grid2 container alignItems="center">
-              <img src={imgUrl} alt="" />
-              <Typography variant="h4" component="p">
-                {temp}°C
-              </Typography>
-            </Grid2>
-            <Typography variant="h5" component="p" textAlign="center" ml={2}>
-              {cityName}
+      <Card>
+        <Grid2
+          onClick={handleCardClick}
+          container
+          alignItems="center"
+          spacing={2}
+          flexDirection="column"
+        >
+          <Grid2 container alignItems="center">
+            <img src={imgUrl} alt="" />
+            <Typography variant="h4" component="p">
+              {temp}°C
             </Typography>
           </Grid2>
-          <Grid2 container justifyContent="space-around">
-            <LoadingButton
-              loading={isLoading && id === cityName}
-              loadingIndicator="Loading…"
-              variant="contained"
-              startIcon={<CachedIcon />}
-              onClick={refreshWeather}
-            >
-              Refresh
-            </LoadingButton>
-            <Button
-              variant="contained"
-              color="error"
-              startIcon={<DeleteIcon />}
-              onClick={onDelete}
-            >
-              Delete
-            </Button>
-          </Grid2>
-        </Card>
-      )}
+          <Typography variant="h5" component="p" textAlign="center" ml={2}>
+            {cityName}
+          </Typography>
+        </Grid2>
+        <Grid2 container justifyContent="space-around">
+          <LoadingButton
+            loading={isLoading && id === cityName}
+            loadingIndicator="Loading…"
+            variant="contained"
+            startIcon={<CachedIcon />}
+            onClick={refreshWeather}
+          >
+            Refresh
+          </LoadingButton>
+          <Button
+            variant="contained"
+            color="error"
+            startIcon={<DeleteIcon />}
+            onClick={onDelete}
+          >
+            Delete
+          </Button>
+        </Grid2>
+      </Card>
     </>
   );
 }
