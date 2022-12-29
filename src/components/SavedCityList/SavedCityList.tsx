@@ -6,7 +6,6 @@ import { addCitiesFromLocalStorage } from "../../redux/features/cityList/cityLis
 import { useDispatch, useSelector } from "react-redux";
 
 import { useEffect } from "react";
-import React from "react";
 
 import { NavLink as RouterLink } from "react-router-dom";
 

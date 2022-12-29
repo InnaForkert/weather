@@ -17,7 +17,7 @@ export const cityListSlice = createSlice({
       state.list.push(action.payload);
     },
     removeCity: (state, action: PayloadAction<string>) => {
-      state.list.filter((el) => el !== action.payload);
+      state.list = state.list.filter((el) => el !== action.payload);
     },
     addCitiesFromLocalStorage: (state, action: PayloadAction<string[]>) => {
       state.list = [...action.payload];

@@ -7,6 +7,10 @@ import { useAppDispatch, useAppSelector } from "../../redux/utils/hooks";
 import { useNavigate } from "react-router";
 import { fetchWeather } from "../../redux/utils/getWeather";
 import { useState } from "react";
+import {
+  removeCity,
+  saveCitiesToLocalStorage,
+} from "../../redux/features/cityList/cityListSlice";
 
 export function WeatherCard({ cityName }: { cityName: string }) {
   const isLoading = useAppSelector((state) => state.weather.isLoading);
@@ -27,6 +31,12 @@ export function WeatherCard({ cityName }: { cityName: string }) {
     setId(cityName);
     await dispatch(fetchWeather(cityName));
     setId("");
+  }
+
+  function onDelete() {
+    console.log("hi");
+    dispatch(removeCity(cityName));
+    dispatch(saveCitiesToLocalStorage());
   }
 
   let imgUrl = "";
@@ -66,7 +76,12 @@ export function WeatherCard({ cityName }: { cityName: string }) {
         >
           Refresh
         </LoadingButton>
-        <Button variant="contained" color="error" startIcon={<DeleteIcon />}>
+        <Button
+          variant="contained"
+          color="error"
+          startIcon={<DeleteIcon />}
+          onClick={onDelete}
+        >
           Delete
         </Button>
       </Grid2>
