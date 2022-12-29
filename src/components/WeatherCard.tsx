@@ -3,12 +3,12 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import CachedIcon from "@mui/icons-material/Cached";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useAppDispatch, useAppSelector } from "../../redux/utils/hooks";
+import { useAppDispatch, useAppSelector } from "../redux/utils/hooks";
 import { useNavigate } from "react-router";
-import { fetchWeather } from "../../redux/utils/getWeather";
+import { fetchWeather } from "../redux/utils/getWeather";
 import { useState } from "react";
-import { removeCityFromList } from "../../redux/features/cityList/cityListSlice";
-import { removeCityFromValues } from "../../redux/features/weather/weatherSlice";
+import { removeCityFromList } from "../redux/features/cityList/cityListSlice";
+import { removeCityFromValues } from "../redux/features/weather/weatherSlice";
 
 export function WeatherCard({ cityName }: { cityName: string }) {
   const isLoading = useAppSelector((state) => state.weather.isLoading);

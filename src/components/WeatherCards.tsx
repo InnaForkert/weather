@@ -2,9 +2,9 @@ import { nanoid } from "nanoid";
 
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
-import { useAppSelector } from "../../redux/utils/hooks";
+import { useAppSelector } from "../redux/utils/hooks";
 
-import { WeatherCard } from "../WeatherCard/WeatherCard";
+import { WeatherCard } from "./WeatherCard";
 import { Typography } from "@mui/material";
 
 export function WeatherCards() {

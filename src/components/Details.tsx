@@ -9,7 +9,7 @@ import { Button, Card, Typography } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 
-import { HourlyChart } from "../components/HourlyChart/HourlyChart";
+import { HourlyChart } from "./HourlyChart";
 
 export function Details() {
   const { cityId } = useParams();
