@@ -33,7 +33,6 @@ export function Details() {
   let pressure = 0;
   let description = "";
   let windSpeed = 0;
-  let cityName = cityId;
 
   if (currentCityWeather) {
     imgUrl = `http://openweathermap.org/img/wn/${currentCityWeather.weather[0].icon}@2x.png`;
@@ -43,9 +42,6 @@ export function Details() {
     pressure = Math.round(currentCityWeather.main.pressure);
     description = currentCityWeather.weather[0].description;
     windSpeed = Math.round(currentCityWeather.wind.speed);
-    cityName =
-      currentCityWeather.name[0].toUpperCase() +
-      currentCityWeather.name.slice(1).toLowerCase();
   }
 
   return (

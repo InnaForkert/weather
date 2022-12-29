@@ -52,6 +52,7 @@ export const weatherSlice = createSlice({
       state.values.push(action.payload);
     });
     builder.addCase(fetchWeather.rejected, (state, action) => {
+      alert("City not found!");
       state.isLoading = false;
       state.error = action.payload as object;
     });
