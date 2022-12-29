@@ -10,6 +10,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
 import { CityInputForm } from "./components/CityInputForm";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -26,7 +28,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <Provider store={store}>
       <CssBaseline enableColorScheme />
       <Grid2 container spacing={5}>
         <Grid2 xs={7} md={9}>
@@ -36,7 +38,7 @@ function App() {
           <CityInputForm />
         </Grid2>
       </Grid2>
-    </>
+    </Provider>
   );
 }
 

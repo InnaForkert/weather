@@ -4,7 +4,7 @@ import type { RenderOptions } from "@testing-library/react";
 import type { PreloadedState } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 
-import { store as setStore } from "../../src/redux/store";
+import { setupStore } from "../../src/redux/store";
 import type { RootState, AppStore } from "../../src/redux/store";
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
@@ -16,7 +16,7 @@ export function renderWithProviders(
   ui: React.ReactElement,
   {
     preloadedState = {},
-    store = setStore(preloadedState),
+    store = setupStore(preloadedState),
     ...renderOptions
   }: ExtendedRenderOptions = {}
 ) {
