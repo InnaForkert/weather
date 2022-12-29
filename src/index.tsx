@@ -1,11 +1,11 @@
-import React from "react";
+import React, { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { createHashRouter, RouterProvider } from "react-router-dom";
 import { ErrorPage } from "./components/ErrorPage";
-import { Details } from "./components/Details";
 import { WeatherCards } from "./components/WeatherCards";
+import { Details } from "@mui/icons-material";
 
 const router = createHashRouter([
   {
