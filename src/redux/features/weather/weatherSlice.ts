@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchWeather, fetchHourlyForecast } from "../../utils/getWeather";
+import Notiflix from "notiflix";
 
 export interface WeatherObj {
   weather: [{ icon: string; description: string }];
@@ -40,7 +41,15 @@ const initialState: Weather = {
 export const weatherSlice = createSlice({
   name: "weather",
   initialState,
-  reducers: {},
+  reducers: {
+    removeCityFromValues: (state, action) => {
+      state.values = state.values.filter((el) => el.name !== action.payload);
+      localStorage.setItem(
+        "savedCities",
+        JSON.stringify(state.values.map((el) => el.name))
+      );
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchWeather.pending, (state) => {
       state.isLoading = true;
@@ -48,11 +57,17 @@ export const weatherSlice = createSlice({
     builder.addCase(fetchWeather.fulfilled, (state, action) => {
       state.isLoading = false;
       state.error = null;
-      state.values.filter((el) => el.name !== action.payload.name);
+      state.values = state.values.filter(
+        (el) => el.name !== action.payload.name
+      );
       state.values.push(action.payload);
+      localStorage.setItem(
+        "savedCities",
+        JSON.stringify(state.values.map((el) => el.name))
+      );
     });
     builder.addCase(fetchWeather.rejected, (state, action) => {
-      alert("City not found!");
+      Notiflix.Notify.failure("City not found!");
       state.isLoading = false;
       state.error = action.payload as object;
     });
@@ -73,3 +88,5 @@ export const weatherSlice = createSlice({
 });
 
 export default weatherSlice.reducer;
+
+export const { removeCityFromValues } = weatherSlice.actions;

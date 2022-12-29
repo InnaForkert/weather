@@ -1,10 +1,7 @@
 import { Alert, Button, Grid, Paper, Snackbar, TextField } from "@mui/material";
 import React, { useState } from "react";
 
-import {
-  addCity,
-  saveCitiesToLocalStorage,
-} from "../../redux/features/cityList/cityListSlice";
+import { addCity } from "../../redux/features/cityList/cityListSlice";
 import { useAppSelector, useAppDispatch } from "../../redux/utils/hooks";
 import { fetchWeather } from "../../redux/utils/getWeather";
 
@@ -37,7 +34,6 @@ export function CityInputForm() {
       setSnackBarOpen(true);
     } else {
       dispatch(addCity(cityCapitalized));
-      dispatch(saveCitiesToLocalStorage());
       dispatch(fetchWeather(cityCapitalized));
       setCityName("");
     }

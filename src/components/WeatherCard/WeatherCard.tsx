@@ -7,10 +7,8 @@ import { useAppDispatch, useAppSelector } from "../../redux/utils/hooks";
 import { useNavigate } from "react-router";
 import { fetchWeather } from "../../redux/utils/getWeather";
 import { useState } from "react";
-import {
-  removeCity,
-  saveCitiesToLocalStorage,
-} from "../../redux/features/cityList/cityListSlice";
+import { removeCityFromList } from "../../redux/features/cityList/cityListSlice";
+import { removeCityFromValues } from "../../redux/features/weather/weatherSlice";
 
 export function WeatherCard({ cityName }: { cityName: string }) {
   const isLoading = useAppSelector((state) => state.weather.isLoading);
@@ -35,8 +33,8 @@ export function WeatherCard({ cityName }: { cityName: string }) {
 
   function onDelete() {
     console.log("hi");
-    dispatch(removeCity(cityName));
-    dispatch(saveCitiesToLocalStorage());
+    dispatch(removeCityFromList(cityName));
+    dispatch(removeCityFromValues(cityName));
   }
 
   let imgUrl = "";

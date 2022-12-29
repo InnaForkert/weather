@@ -16,23 +16,16 @@ export const cityListSlice = createSlice({
     addCity: (state, action: PayloadAction<string>) => {
       state.list.push(action.payload);
     },
-    removeCity: (state, action: PayloadAction<string>) => {
+    removeCityFromList: (state, action: PayloadAction<string>) => {
       state.list = state.list.filter((el) => el !== action.payload);
     },
     addCitiesFromLocalStorage: (state, action: PayloadAction<string[]>) => {
       state.list = [...action.payload];
     },
-    saveCitiesToLocalStorage: (state) => {
-      localStorage.setItem("savedCities", JSON.stringify(state.list));
-    },
   },
 });
 
-export const {
-  addCity,
-  removeCity,
-  addCitiesFromLocalStorage,
-  saveCitiesToLocalStorage,
-} = cityListSlice.actions;
+export const { addCity, removeCityFromList, addCitiesFromLocalStorage } =
+  cityListSlice.actions;
 
 export default cityListSlice.reducer;
