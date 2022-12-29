@@ -18,7 +18,7 @@ export function CityInputForm() {
   function handleInput(e: React.FormEvent<HTMLDivElement>) {
     if (e.target) {
       const target = e.target as HTMLInputElement;
-      setCityName(target.value);
+      setCityName(target.value.toLowerCase());
     }
   }
 

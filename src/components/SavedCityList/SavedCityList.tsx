@@ -30,7 +30,7 @@ export function SavedCityList() {
           key={nanoid()}
         >
           <Typography color="black" p={1}>
-            {el}
+            {el[0].toUpperCase() + el.slice(1).toLowerCase()}
           </Typography>
         </ListItemButton>
       ))}
