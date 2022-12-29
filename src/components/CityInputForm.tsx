@@ -7,6 +7,7 @@ import { fetchWeather } from "../redux/utils/getWeather";
 import Notiflix from "notiflix";
 
 export function CityInputForm() {
+  console.log("hi");
   const [cityName, setCityName] = useState("");
   const values = useAppSelector((state) => state.weather.values);
 
