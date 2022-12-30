@@ -5,8 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/utils/hooks";
 import { fetchHourlyForecast } from "../redux/utils/getWeather";
 
-import { Button, Card, Typography } from "@mui/material";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import { Button, Card, Typography, Grid } from "@mui/material";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 
 import { HourlyChart } from "../components/HourlyChart";
@@ -47,31 +46,33 @@ export function Details() {
   return (
     <>
       <Card>
-        <Grid2 container alignItems="center">
-          <Grid2 sm={12} md={5}>
-            <Grid2 container alignItems="center">
-              <Typography variant="h3" component="h1" mb={2}>
+        <Grid container alignItems="center">
+          <Grid item sm={12} md={5}>
+            <Grid container alignItems="center">
+              <Typography variant="h3" component="h1" mb={2} title="city name">
                 {cityId}
               </Typography>
-              <img src={imgUrl} alt="" />
-            </Grid2>
-            <Typography variant="h5" component="p" mb={1}>
+              <img src={imgUrl} alt="weather icon" />
+            </Grid>
+            <Typography variant="h5" component="p" mb={1} title="temperature">
               Temperature: {temp}°C
             </Typography>
-            <Typography variant="h5" component="p" mb={1}>
+            <Typography variant="h5" component="p" mb={1} title="feels like">
               Feels like: {feelsLike}°C
             </Typography>
-            <Typography fontStyle="italic" mb={2}>
+            <Typography fontStyle="italic" mb={2} title="description">
               {description}
             </Typography>
-            <Typography>Humidity: {humidity}%</Typography>
-            <Typography>Pressure: {pressure} mb</Typography>
-            <Typography>Wind speed: {windSpeed} m/s</Typography>
-          </Grid2>
-          <Grid2 sm={11} md={7}>
+            <Typography title="humidity">Humidity: {humidity}%</Typography>
+            <Typography title="pressure">Pressure: {pressure} mb</Typography>
+            <Typography title="wind speed">
+              Wind speed: {windSpeed} m/s
+            </Typography>
+          </Grid>
+          <Grid sm={11} md={7} item>
             <HourlyChart weather={hourlyWeather} />
-          </Grid2>
-          <Grid2>
+          </Grid>
+          <Grid item>
             <Button
               variant="contained"
               startIcon={<ArrowCircleLeftIcon />}
@@ -79,8 +80,8 @@ export function Details() {
             >
               Back to all cities
             </Button>
-          </Grid2>
-        </Grid2>
+          </Grid>
+        </Grid>
       </Card>
     </>
   );

@@ -6,6 +6,7 @@ const config: Config.InitialOptions = {
     "^.+\\.tsx?$": "ts-jest",
   },
   setupFilesAfterEnv: ["@testing-library/jest-dom/extend-expect"],
+  setupFiles: ["./setupTests.ts"],
   testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   testEnvironment: "jsdom",
