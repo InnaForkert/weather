@@ -44,10 +44,10 @@ export function Details() {
   }
 
   return (
-    <>
+    <Grid item xs={9} md={11} lg={9}>
       <Card aria-label="detailed weather">
-        <Grid container alignItems="center">
-          <Grid item sm={12} md={5}>
+        <Grid container p={3} spacing={0}>
+          <Grid item sm={11} md={5}>
             <Grid container alignItems="center">
               <Typography variant="h3" component="h1" mb={2} title="city name">
                 {cityId}
@@ -83,6 +83,6 @@ export function Details() {
           </Grid>
         </Grid>
       </Card>
-    </>
+    </Grid>
   );
 }

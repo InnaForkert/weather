@@ -19,7 +19,7 @@ export function WeatherCards() {
           {cityList.map((el: string) => {
             if (values.find((value: WeatherObj) => value.name === el)) {
               return (
-                <Grid xs={12} md={6} lg={4} key={nanoid()}>
+                <Grid item xs={11} md={5} lg={3} key={nanoid()} m={1}>
                   <WeatherCard cityName={el} />
                 </Grid>
               );

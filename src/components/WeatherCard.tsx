@@ -50,28 +50,44 @@ export function WeatherCard({ cityName }: { cityName: string }) {
           onClick={handleCardClick}
           container
           alignItems="center"
-          spacing={2}
           flexDirection="column"
-          p={2}
           aria-label="weather card"
         >
-          <Grid container alignItems="center" p={2}>
-            <img src={imgUrl} alt="" />
-            <Typography variant="h4" component="p" title="temperature">
-              {temp}°C
+          <Grid
+            container
+            alignItems="center"
+            justifyContent=""
+            flexDirection="column"
+            pt={2}
+          >
+            <Grid item>
+              <Grid
+                container
+                spacing={2}
+                pt={3}
+                alignItems="center"
+                justifyContent="center"
+              >
+                <img src={imgUrl} alt="" />
+                <Typography variant="h4" component="p" title="temperature">
+                  {temp}°C
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Typography
+              variant="h5"
+              component="p"
+              textAlign="center"
+              title="city name"
+              pb={3}
+            >
+              {cityName}
             </Typography>
           </Grid>
-          <Typography
-            variant="h5"
-            component="p"
-            textAlign="center"
-            ml={2}
-            title="city name"
-          >
-            {cityName}
-          </Typography>
         </Grid>
-        <Grid container justifyContent="space-around">
+        <Grid container justifyContent="space-around" pb={3}>
           <LoadingButton
             loading={isLoading && id === cityName}
             loadingIndicator="Loading…"
