@@ -1,6 +1,5 @@
-import { Button, Card, Typography } from "@mui/material";
+import { Button, Card, Typography, Grid } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import CachedIcon from "@mui/icons-material/Cached";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useAppDispatch, useAppSelector } from "../redux/utils/hooks";
@@ -48,30 +47,38 @@ export function WeatherCard({ cityName }: { cityName: string }) {
   return (
     <>
       <Card>
-        <Grid2
+        <Grid
           onClick={handleCardClick}
           container
           alignItems="center"
           spacing={2}
           flexDirection="column"
+          p={2}
         >
-          <Grid2 container alignItems="center">
+          <Grid container alignItems="center" p={2}>
             <img src={imgUrl} alt="" />
-            <Typography variant="h4" component="p">
+            <Typography variant="h4" component="p" title="temperature">
               {temp}°C
             </Typography>
-          </Grid2>
-          <Typography variant="h5" component="p" textAlign="center" ml={2}>
+          </Grid>
+          <Typography
+            variant="h5"
+            component="p"
+            textAlign="center"
+            ml={2}
+            title="city name"
+          >
             {cityName}
           </Typography>
-        </Grid2>
-        <Grid2 container justifyContent="space-around">
+        </Grid>
+        <Grid container justifyContent="space-around">
           <LoadingButton
             loading={isLoading && id === cityName}
             loadingIndicator="Loading…"
             variant="contained"
             startIcon={<CachedIcon />}
             onClick={refreshWeather}
+            name="refresh data"
           >
             Refresh
           </LoadingButton>
@@ -83,7 +90,7 @@ export function WeatherCard({ cityName }: { cityName: string }) {
           >
             Delete
           </Button>
-        </Grid2>
+        </Grid>
       </Card>
     </>
   );

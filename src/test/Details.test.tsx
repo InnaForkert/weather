@@ -1,6 +1,5 @@
 import { screen } from "@testing-library/react";
 import { renderWithProviders } from "../redux/utils/testUtils";
-
 import { Details } from "../components/Details";
 import { BrowserRouter } from "react-router-dom";
 

@@ -15,7 +15,7 @@ export function WeatherCards() {
   return (
     <>
       {values.length ? (
-        <Grid2 container spacing={2}>
+        <Grid2 container spacing={2} p={2}>
           {cityList.map((el: string) => {
             if (values.find((value: WeatherObj) => value.name === el)) {
               return (
