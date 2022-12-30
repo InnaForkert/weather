@@ -4,14 +4,20 @@ import { useAppDispatch } from "./redux/utils/hooks";
 import { addCitiesFromLocalStorage } from "./redux/features/cityList/cityListSlice";
 import { fetchWeather } from "./redux/utils/getWeather";
 
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 import CssBaseline from "@mui/material/CssBaseline";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
 import { CityInputForm } from "./components/CityInputForm";
+import { Grid, Typography } from "@mui/material";
 
-function App() {
+export const LocationDisplay = () => {
+  const location = useLocation();
+
+  return <div data-testid="location-display">{location.pathname}</div>;
+};
+
+export function App() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -28,14 +34,17 @@ function App() {
   return (
     <>
       <CssBaseline enableColorScheme />
-      <Grid2 container spacing={5}>
-        <Grid2 xs={7} md={9}>
+      <Typography variant="h4" component="h1">
+        Welcome!
+      </Typography>
+      <Grid container spacing={5}>
+        <Grid item xs={7} md={9}>
           <Outlet />
-        </Grid2>
-        <Grid2 xs={5} md={3}>
+        </Grid>
+        <Grid item xs={5} md={3}>
           <CityInputForm />
-        </Grid2>
-      </Grid2>
+        </Grid>
+      </Grid>
     </>
   );
 }

@@ -45,7 +45,7 @@ export function Details() {
 
   return (
     <>
-      <Card>
+      <Card aria-label="detailed weather">
         <Grid container alignItems="center">
           <Grid item sm={12} md={5}>
             <Grid container alignItems="center">

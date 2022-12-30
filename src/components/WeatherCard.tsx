@@ -31,7 +31,6 @@ export function WeatherCard({ cityName }: { cityName: string }) {
   }
 
   function onDelete() {
-    console.log("hi");
     dispatch(removeCityFromList(cityName));
     dispatch(removeCityFromValues(cityName));
   }
@@ -54,6 +53,7 @@ export function WeatherCard({ cityName }: { cityName: string }) {
           spacing={2}
           flexDirection="column"
           p={2}
+          aria-label="weather card"
         >
           <Grid container alignItems="center" p={2}>
             <img src={imgUrl} alt="" />

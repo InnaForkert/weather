@@ -1,11 +1,11 @@
 import { nanoid } from "nanoid";
 
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+// import Grid from "@mui/material/Unstable_Grid/Grid";
 
 import { useAppSelector } from "../redux/utils/hooks";
 
 import { WeatherCard } from "./WeatherCard";
-import { Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { WeatherObj } from "../redux/features/weather/weatherSlice";
 
 export function WeatherCards() {
@@ -15,18 +15,18 @@ export function WeatherCards() {
   return (
     <>
       {values.length ? (
-        <Grid2 container spacing={2} p={2}>
+        <Grid container spacing={2} p={2}>
           {cityList.map((el: string) => {
             if (values.find((value: WeatherObj) => value.name === el)) {
               return (
-                <Grid2 xs={12} md={6} lg={4} key={nanoid()}>
+                <Grid xs={12} md={6} lg={4} key={nanoid()}>
                   <WeatherCard cityName={el} />
-                </Grid2>
+                </Grid>
               );
             }
             return "";
           })}
-        </Grid2>
+        </Grid>
       ) : (
         <Typography> No saved cities yet 😥 </Typography>
       )}

@@ -2,6 +2,10 @@ import type { Config } from "@jest/types";
 
 const config: Config.InitialOptions = {
   roots: ["<rootDir>/src/test", "<rootDir>/src"],
+  transformIgnorePatterns: [`/node_modules/(?!nanoid)`],
+  moduleNameMapper: {
+    "^nanoid(/(.*)|$)": "nanoid$1",
+  },
   transform: {
     "^.+\\.tsx?$": "ts-jest",
   },

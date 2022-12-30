@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "./redux/store";
@@ -10,7 +9,7 @@ import { ErrorPage } from "./components/ErrorPage";
 import { Details } from "./components/Details";
 import { WeatherCards } from "./components/WeatherCards";
 
-const router = createHashRouter([
+export const router = createHashRouter([
   {
     path: "/",
     element: <App />,
@@ -29,8 +28,9 @@ const router = createHashRouter([
 ]);
 
 const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
+  (document.getElementById("root") as HTMLElement) ||
+    document.createElement("div")
+); //for testing purposes
 root.render(
   <React.StrictMode>
     <Provider store={store}>

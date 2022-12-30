@@ -7,7 +7,6 @@ import { fetchWeather } from "../redux/utils/getWeather";
 import Notiflix from "notiflix";
 
 export function CityInputForm() {
-  console.log("hi");
   const [cityName, setCityName] = useState("");
   const values = useAppSelector((state) => state.weather.values);
 
@@ -46,7 +45,7 @@ export function CityInputForm() {
 
   return (
     <Paper sx={{ position: "fixed", right: "5%", top: "11%" }} elevation={3}>
-      <form onSubmit={(e) => saveCity(e)}>
+      <form onSubmit={(e) => saveCity(e)} aria-label="search city form">
         <Grid container direction="column" spacing={2} p={2}>
           <Grid item>
             <TextField
@@ -56,6 +55,7 @@ export function CityInputForm() {
               value={cityName}
               onInput={(e) => handleInput(e)}
               role="input"
+              inputProps={{ "data-testid": "content-input" }}
             />
           </Grid>
           <Grid item>
