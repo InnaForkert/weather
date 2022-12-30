@@ -34,10 +34,10 @@ export function App() {
   return (
     <>
       <CssBaseline enableColorScheme />
-      <Typography variant="h4" component="h1">
+      <Typography variant="h4" component="h1" p={5}>
         Welcome!
       </Typography>
-      <Grid container spacing={5}>
+      <Grid container spacing={5} pl={4}>
         <Grid item xs={7} md={9}>
           <Outlet />
         </Grid>

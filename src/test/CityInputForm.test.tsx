@@ -38,6 +38,16 @@ test("form reset", () => {
   expect(hasInputValue(input, "")).toBe(true);
 });
 
+test("nonempty input", () => {
+  renderWithProviders(<CityInputForm />);
+  const input = screen.getByTestId("content-input");
+  const form = screen.getByLabelText("search city form");
+
+  fireEvent.input(input, { target: { value: "city" } });
+  fireEvent.submit(form);
+  expect(screen.queryByText("Enter Something!")).not.toBeInTheDocument();
+});
+
 test("empty input", () => {
   renderWithProviders(<CityInputForm />);
   const input = screen.getByTestId("content-input");
