@@ -5,3 +5,7 @@
   padding: 0;
   font-family: "Righteous", cursive;
 }
+
+.hidden-form {
+  transform: translateX(-90%);
+}

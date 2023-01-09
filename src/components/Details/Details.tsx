@@ -2,13 +2,13 @@ import { useEffect } from "react";
 
 import { useNavigate, useParams } from "react-router-dom";
 
-import { useAppDispatch, useAppSelector } from "../redux/utils/hooks";
-import { fetchHourlyForecast } from "../redux/utils/getWeather";
+import { useAppDispatch, useAppSelector } from "../../redux/utils/hooks";
+import { fetchHourlyForecast } from "../../redux/utils/getWeather";
 
 import { Button, Card, Typography, Grid } from "@mui/material";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 
-import { HourlyChart } from "../components/HourlyChart";
+import { HourlyChart } from "../HourlyChart";
 
 export function Details() {
   const { cityId } = useParams();

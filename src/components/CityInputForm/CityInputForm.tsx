@@ -6,10 +6,11 @@ import { fetchWeather } from "../../redux/utils/getWeather";
 
 import Notiflix from "notiflix";
 
-import { Form, Input, Submit, Label } from "./CityInputForm.styled";
+import { Form, Input, Submit, Label, Hide } from "./CityInputForm.styled";
 
 export function CityInputForm() {
   const [cityName, setCityName] = useState("");
+  const [isHidden, setIsHidden] = useState(false);
   const values = useAppSelector((state) => state.weather.values);
   const dispatch = useAppDispatch();
 
@@ -49,7 +50,12 @@ export function CityInputForm() {
     <Form
       onSubmit={(e: React.FormEvent) => saveCity(e)}
       aria-label="search city form"
+      className={isHidden ? "hidden-form" : ""}
+      draggable={true}
     >
+      <Hide onClick={() => setIsHidden((prev) => !prev)}>
+        {isHidden ? "▶" : "◀"}
+      </Hide>
       <Input
         id="cityName"
         value={cityName}

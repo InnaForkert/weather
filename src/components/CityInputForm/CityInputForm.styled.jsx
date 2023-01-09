@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../theme/colors";
 
-const { main, mainLight, lightAccent, darkAccent, darkest } = colors;
+const { mainLight, lightAccent, darkest } = colors;
 
 export const Form = styled.form`
   position: fixed;
@@ -11,6 +11,7 @@ export const Form = styled.form`
   padding: 20px 20px 20px 30px;
   border-radius: 0 20px 20px 0;
   background-color: ${mainLight};
+  transition: transform 400ms;
 `;
 
 export const Input = styled.input`
@@ -48,4 +49,14 @@ export const Submit = styled.button`
     background-color: ${lightAccent};
     border: 2px solid ${darkest};
   }
+`;
+
+export const Hide = styled.button`
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: ${mainLight};
+  border: none;
+  padding: 10px;
+  border-radius: 14px;
 `;

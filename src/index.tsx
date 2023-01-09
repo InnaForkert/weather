@@ -5,7 +5,7 @@ import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import { createHashRouter, RouterProvider } from "react-router-dom";
 import { ErrorPage } from "./components/ErrorPage";
-import { Details } from "./components/Details";
+import { Details } from "./components/Details/Details";
 import { WeatherCards } from "./components/WeatherCards";
 import "./index.css";
 
