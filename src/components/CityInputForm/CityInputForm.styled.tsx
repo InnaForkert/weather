@@ -12,6 +12,7 @@ export const Form = styled.form`
   border-radius: 0 20px 20px 0;
   background-color: ${mainLight};
   transition: transform 400ms;
+  border: 1px dotted ${darkest};
 `;
 
 export const Input = styled.input`
@@ -58,5 +59,5 @@ export const Hide = styled.button`
   background-color: ${mainLight};
   border: none;
   padding: 10px;
-  border-radius: 14px;
+  border-radius: 50%;
 `;

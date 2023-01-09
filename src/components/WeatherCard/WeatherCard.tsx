@@ -4,26 +4,30 @@ import { fetchWeather } from "../../redux/utils/getWeather";
 import { useState } from "react";
 import { removeCityFromList } from "../../redux/features/cityList/cityListSlice";
 import { removeCityFromValues } from "../../redux/features/weather/weatherSlice";
+import { Submit } from "../CityInputForm/CityInputForm.styled";
+import {
+  CardContainer,
+  WeatherIcon,
+  Temp,
+  CityName,
+  Delete,
+} from "./WeatherCard.styled";
 
 export function WeatherCard({ cityName }: { cityName: string }) {
-  const isLoading = useAppSelector((state) => state.weather.isLoading);
   const values = useAppSelector((state) => state.weather.values);
   const weather = values.find((el) => el.name === cityName);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const [id, setId] = useState("");
 
   function handleCardClick(e: React.MouseEvent) {
     const target = e.target as HTMLElement;
-    if (target.nodeName !== "button") {
+    if (target.nodeName !== "BUTTON") {
       navigate(`details/${cityName}`);
     }
   }
 
   async function refreshWeather() {
-    setId(cityName);
     await dispatch(fetchWeather(cityName));
-    setId("");
   }
 
   function onDelete() {
@@ -40,21 +44,14 @@ export function WeatherCard({ cityName }: { cityName: string }) {
   }
 
   return (
-    <>
-      <div onClick={handleCardClick} aria-label="weather card">
-        <img src={imgUrl} alt="" />
-        <h4 title="temperature">{temp}°C</h4>
-        <p title="city name">{cityName}</p>
-      </div>
-      <button
-        // loading={isLoading && id === cityName}
-        // loadingIndicator="Loading…"
-        onClick={refreshWeather}
-        name="refresh data"
-      >
+    <CardContainer onClick={handleCardClick} aria-label="weather card">
+      <WeatherIcon src={imgUrl} alt="weather icon" />
+      <Temp title="temperature">{temp}°C</Temp>
+      <CityName title="city name">{cityName}</CityName>
+      <Submit onClick={refreshWeather} name="refresh data">
         Refresh
-      </button>
-      <button onClick={onDelete}>Delete</button>
-    </>
+      </Submit>
+      <Delete onClick={onDelete}>Delete</Delete>
+    </CardContainer>
   );
 }

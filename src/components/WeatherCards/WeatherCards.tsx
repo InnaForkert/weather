@@ -3,6 +3,7 @@ import { useAppSelector } from "../../redux/utils/hooks";
 import { WeatherCard } from "../WeatherCard/WeatherCard";
 import { WeatherObj } from "../../redux/features/weather/weatherSlice";
 import { CardsContainer, Empty } from "./WeatherCards.styled";
+import { nanoid } from "@reduxjs/toolkit";
 
 export function WeatherCards() {
   const cityList = useAppSelector((state) => state.cityList.list);
@@ -14,7 +15,7 @@ export function WeatherCards() {
         <CardsContainer>
           {cityList.map((el: string) => {
             if (values.find((value: WeatherObj) => value.name === el)) {
-              return <WeatherCard cityName={el} />;
+              return <WeatherCard cityName={el} key={nanoid()} />;
             }
             return "";
           })}
