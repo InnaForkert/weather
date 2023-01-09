@@ -6,6 +6,7 @@ export const DetailsContainer = styled.div`
   gap: 20px;
   text-align: right;
   padding-bottom: 40px;
+  padding-inline: 15px;
 `;
 
 export const DetailsHeading = styled.div`

@@ -30,7 +30,7 @@ export function App() {
 
   return (
     <>
-      <h1>Welcome!</h1>
+      <h1 className="hidden">Welcome!</h1>
       <Outlet />
       <CityInputForm />
     </>
