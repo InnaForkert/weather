@@ -21,7 +21,10 @@ export function HourlyChart({ weather }: { weather: CurrentWeatherObj }) {
   });
 
   return (
-    <ResponsiveContainer width={"99%"} height={300}>
+    <ResponsiveContainer
+      width={window.innerWidth < 768 ? "99%" : "60%"}
+      height={300}
+    >
       <LineChart data={data}>
         <Line type="monotone" dataKey="temperature" stroke="#8884d8" />
         <XAxis dataKey="time" hide />

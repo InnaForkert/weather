@@ -12,6 +12,7 @@
 
 body {
   background-color: #e0b1cb !important;
+  overflow-x: hidden;
 }
 
 .hidden {

@@ -61,6 +61,7 @@ export function CityInputForm() {
         onInput={(e: React.FormEvent<HTMLDivElement>) => handleInput(e)}
         role="input"
         placeholder=" "
+        data-testid="content-input"
       />
       <Label htmlFor="cityName">Enter city name</Label>
       <Submit type="submit">Save</Submit>

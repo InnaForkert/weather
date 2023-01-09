@@ -7,6 +7,7 @@ import { fetchWeather } from "./redux/utils/getWeather";
 import { Outlet, useLocation } from "react-router-dom";
 
 import { CityInputForm } from "./components/CityInputForm/CityInputForm";
+import { Header } from "./components/Header/Header";
 
 export const LocationDisplay = () => {
   const location = useLocation();
@@ -30,6 +31,7 @@ export function App() {
 
   return (
     <>
+      <Header />
       <h1 className="hidden">Welcome!</h1>
       <Outlet />
       <CityInputForm />

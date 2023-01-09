@@ -14,8 +14,9 @@ import {
   Description,
   Detail,
   DetailsHeading,
+  BackToAll,
 } from "./Details.styled";
-import { Submit } from "../CityInputForm/CityInputForm.styled";
+import {} from "../CityInputForm/CityInputForm.styled";
 
 export function Details() {
   const { cityId } = useParams();
@@ -51,21 +52,23 @@ export function Details() {
   }
 
   return (
-    <DetailsContainer aria-label="detailed weather">
-      <div>
-        <DetailsHeading>
-          <CityName title="city name">{cityId}</CityName>
-          <WeatherIcon src={imgUrl} alt="weather icon" />
-        </DetailsHeading>
-        <Temp title="temperature">Temperature: {temp}°C</Temp>
-        <Temp title="feels like">Feels like: {feelsLike}°C</Temp>
-        <Description title="description">{description}</Description>
-        <Detail title="humidity">Humidity: {humidity}%</Detail>
-        <Detail title="pressure">Pressure: {pressure} mb</Detail>
-        <Detail title="wind speed">Wind speed: {windSpeed} m/s</Detail>
-      </div>
-      <HourlyChart weather={hourlyWeather} />
-      <Submit onClick={() => navigate("/")}>Back to all cities</Submit>
-    </DetailsContainer>
+    <>
+      <DetailsContainer aria-label="detailed weather">
+        <div>
+          <DetailsHeading>
+            <CityName title="city name">{cityId}</CityName>
+            <WeatherIcon src={imgUrl} alt="weather icon" />
+          </DetailsHeading>
+          <Temp title="temperature">Temperature: {temp}°C</Temp>
+          <Temp title="feels like">Feels like: {feelsLike}°C</Temp>
+          <Description title="description">{description}</Description>
+          <Detail title="humidity">Humidity: {humidity}%</Detail>
+          <Detail title="pressure">Pressure: {pressure} mb</Detail>
+          <Detail title="wind speed">Wind speed: {windSpeed} m/s</Detail>
+        </div>
+        <HourlyChart weather={hourlyWeather} />
+      </DetailsContainer>
+      <BackToAll onClick={() => navigate("/")}>Back to all cities</BackToAll>
+    </>
   );
 }

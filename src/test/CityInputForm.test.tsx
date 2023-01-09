@@ -13,7 +13,9 @@ test("render input form", () => {
   renderWithProviders(<CityInputForm />);
   const input = screen.getByRole("input");
   expect(input).toBeInTheDocument();
-  expect(input).toHaveTextContent("Enter city name");
+
+  const label = screen.getByText("Enter city name");
+  expect(label).toBeInTheDocument();
 
   const button = screen.getByRole("button");
   expect(button).toBeInTheDocument();

@@ -3,9 +3,12 @@ import styled from "styled-components";
 export const CardsContainer = styled.div`
   padding: 40px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   gap: 15px;
+
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 export const Empty = styled.p`

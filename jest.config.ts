@@ -5,6 +5,10 @@ const config: Config.InitialOptions = {
   transformIgnorePatterns: [`/node_modules/(?!nanoid)`],
   moduleNameMapper: {
     "^nanoid(/(.*)|$)": "nanoid$1",
+    "typeface-nunito": "identity-obj-proxy",
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+      "<rootDir>/__mocks__/fileMock.js",
+    "\\.(css|less|sass|scss)$": "identity-obj-proxy",
   },
   transform: {
     "^.+\\.tsx?$": "ts-jest",

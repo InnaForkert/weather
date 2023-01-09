@@ -30,11 +30,16 @@ export const Delete = styled(Submit)`
   border-color: ${colors.darkest};
   color: ${colors.darkest};
   margin-left: 5px;
+  cursor: pointer;
 
   &:hover,
   &:focus {
     background-color: ${colors.darkest};
     border-color: ${colors.darkAccent};
     color: ${colors.darkAccent};
+  }
+
+  @media screen and (min-width: 480px) {
+    font-size: 16px;
   }
 `;

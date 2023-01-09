@@ -18,6 +18,7 @@ export function WeatherCard({ cityName }: { cityName: string }) {
   const weather = values.find((el) => el.name === cityName);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleCardClick(e: React.MouseEvent) {
     const target = e.target as HTMLElement;
@@ -27,7 +28,9 @@ export function WeatherCard({ cityName }: { cityName: string }) {
   }
 
   async function refreshWeather() {
+    setIsLoading(true);
     await dispatch(fetchWeather(cityName));
+    setIsLoading(false);
   }
 
   function onDelete() {
@@ -48,10 +51,12 @@ export function WeatherCard({ cityName }: { cityName: string }) {
       <WeatherIcon src={imgUrl} alt="weather icon" />
       <Temp title="temperature">{temp}°C</Temp>
       <CityName title="city name">{cityName}</CityName>
-      <Submit onClick={refreshWeather} name="refresh data">
-        Refresh
+      <Submit onClick={refreshWeather} name="refresh data" type="button">
+        {isLoading ? "Loading" : "Refresh"}
       </Submit>
-      <Delete onClick={onDelete}>Delete</Delete>
+      <Delete onClick={onDelete} type="button">
+        Delete
+      </Delete>
     </CardContainer>
   );
 }

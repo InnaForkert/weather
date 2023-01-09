@@ -13,13 +13,22 @@ export const Form = styled.form`
   background-color: ${mainLight};
   transition: transform 400ms;
   border: 1px dotted ${darkest};
+
+  @media screen and (min-width: 480px) {
+    width: 300px;
+    padding: 30px 30px 30px 40px;
+  }
 `;
 
 export const Input = styled.input`
+  width: 80%;
   padding: 5px 10px;
   border: 2px inset ${lightAccent};
   border-radius: 10px;
   margin-bottom: 10px;
+  @media screen and (min-width: 480px) {
+    font-size: 20px;
+  }
 `;
 
 export const Label = styled.label`
@@ -33,6 +42,11 @@ export const Label = styled.label`
   ${Input}:focus + & {
     transform: translate(0, 0);
   }
+
+  @media screen and (min-width: 480px) {
+    font-size: 20px;
+    transform: translate(10px, -42px);
+  }
 `;
 
 export const Submit = styled.button`
@@ -40,9 +54,11 @@ export const Submit = styled.button`
   color: ${lightAccent};
   background-color: ${darkest};
   border-radius: 14px;
+  min-width: 110px;
   border: 2px solid ${lightAccent};
   transition-property: color, background-color, border;
   transition-duration: 250ms;
+  cursor: pointer;
 
   &:focus,
   &:hover {
@@ -50,9 +66,13 @@ export const Submit = styled.button`
     background-color: ${lightAccent};
     border: 2px solid ${darkest};
   }
+
+  @media screen and (min-width: 480px) {
+    font-size: 16px;
+  }
 `;
 
-export const Hide = styled.button`
+export const Hide = styled.span`
   position: absolute;
   top: 0;
   right: 0;
@@ -60,4 +80,9 @@ export const Hide = styled.button`
   border: none;
   padding: 10px;
   border-radius: 50%;
+  cursor: pointer;
+
+  @media screen and (min-width: 480px) {
+    font-size: 20px;
+  }
 `;
