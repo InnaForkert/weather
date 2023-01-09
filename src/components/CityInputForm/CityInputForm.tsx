@@ -10,7 +10,7 @@ import { Form, Input, Submit, Label, Hide } from "./CityInputForm.styled";
 
 export function CityInputForm() {
   const [cityName, setCityName] = useState("");
-  const [isHidden, setIsHidden] = useState(false);
+  const [isHidden, setIsHidden] = useState(true);
   const values = useAppSelector((state) => state.weather.values);
   const dispatch = useAppDispatch();
 
@@ -51,7 +51,6 @@ export function CityInputForm() {
       onSubmit={(e: React.FormEvent) => saveCity(e)}
       aria-label="search city form"
       className={isHidden ? "hidden-form" : ""}
-      draggable={true}
     >
       <Hide onClick={() => setIsHidden((prev) => !prev)}>
         {isHidden ? "▶" : "◀"}
@@ -61,13 +60,10 @@ export function CityInputForm() {
         value={cityName}
         onInput={(e: React.FormEvent<HTMLDivElement>) => handleInput(e)}
         role="input"
-        inputProps={{ "data-testid": "content-input" }}
         placeholder=" "
       />
-      <Label for="cityName">Enter city name</Label>
-      <Submit variant="contained" type="submit">
-        Save
-      </Submit>
+      <Label htmlFor="cityName">Enter city name</Label>
+      <Submit type="submit">Save</Submit>
     </Form>
   );
 }

@@ -4,9 +4,9 @@ import App from "./App";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import { createHashRouter, RouterProvider } from "react-router-dom";
-import { ErrorPage } from "./components/ErrorPage";
+import { ErrorPage } from "./components/ErrorPage/ErrorPage";
 import { Details } from "./components/Details/Details";
-import { WeatherCards } from "./components/WeatherCards";
+import { WeatherCards } from "./components/WeatherCards/WeatherCards";
 import "./index.css";
 
 export const router = createHashRouter([

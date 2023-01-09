@@ -5,10 +5,17 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/utils/hooks";
 import { fetchHourlyForecast } from "../../redux/utils/getWeather";
 
-import { Button, Card, Typography, Grid } from "@mui/material";
-import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
-
-import { HourlyChart } from "../HourlyChart";
+import { HourlyChart } from "../HourlyChart/HourlyChart";
+import {
+  DetailsContainer,
+  CityName,
+  WeatherIcon,
+  Temp,
+  Description,
+  Detail,
+  DetailsHeading,
+} from "./Details.styled";
+import { Submit } from "../CityInputForm/CityInputForm.styled";
 
 export function Details() {
   const { cityId } = useParams();
@@ -44,45 +51,21 @@ export function Details() {
   }
 
   return (
-    <Grid item xs={11} md={11} lg={9}>
-      <Card aria-label="detailed weather">
-        <Grid container p={3} spacing={0}>
-          <Grid item sm={11} md={5}>
-            <Grid container alignItems="center">
-              <Typography variant="h3" component="h1" mb={2} title="city name">
-                {cityId}
-              </Typography>
-              <img src={imgUrl} alt="weather icon" />
-            </Grid>
-            <Typography variant="h5" component="p" mb={1} title="temperature">
-              Temperature: {temp}°C
-            </Typography>
-            <Typography variant="h5" component="p" mb={1} title="feels like">
-              Feels like: {feelsLike}°C
-            </Typography>
-            <Typography fontStyle="italic" mb={2} title="description">
-              {description}
-            </Typography>
-            <Typography title="humidity">Humidity: {humidity}%</Typography>
-            <Typography title="pressure">Pressure: {pressure} mb</Typography>
-            <Typography title="wind speed">
-              Wind speed: {windSpeed} m/s
-            </Typography>
-          </Grid>
-          <Grid sm={11} md={7} item>
-            <HourlyChart weather={hourlyWeather} />
-          </Grid>
-          <Grid item>
-            <Button
-              variant="contained"
-              startIcon={<ArrowCircleLeftIcon />}
-              onClick={() => navigate("/")}
-            >
-              Back to all cities
-            </Button>
-          </Grid>
-        </Grid>
-      </Card>
-    </Grid>
+    <DetailsContainer aria-label="detailed weather">
+      <div>
+        <DetailsHeading>
+          <CityName title="city name">{cityId}</CityName>
+          <WeatherIcon src={imgUrl} alt="weather icon" />
+        </DetailsHeading>
+        <Temp title="temperature">Temperature: {temp}°C</Temp>
+        <Temp title="feels like">Feels like: {feelsLike}°C</Temp>
+        <Description title="description">{description}</Description>
+        <Detail title="humidity">Humidity: {humidity}%</Detail>
+        <Detail title="pressure">Pressure: {pressure} mb</Detail>
+        <Detail title="wind speed">Wind speed: {windSpeed} m/s</Detail>
+      </div>
+      <HourlyChart weather={hourlyWeather} />
+      <Submit onClick={() => navigate("/")}>Back to all cities</Submit>
+    </DetailsContainer>
   );
 }

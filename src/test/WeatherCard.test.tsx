@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 
 import { renderWithProviders } from "../redux/utils/testUtils";
 
-import { WeatherCard } from "../components/WeatherCard";
+import { WeatherCard } from "../components/WeatherCard/WeatherCard";
 import { BrowserRouter } from "react-router-dom";
 
 test("render weather card", () => {

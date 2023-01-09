@@ -6,10 +6,7 @@ import { fetchWeather } from "./redux/utils/getWeather";
 
 import { Outlet, useLocation } from "react-router-dom";
 
-import CssBaseline from "@mui/material/CssBaseline";
-
 import { CityInputForm } from "./components/CityInputForm/CityInputForm";
-import { Grid, Typography } from "@mui/material";
 
 export const LocationDisplay = () => {
   const location = useLocation();
@@ -33,18 +30,9 @@ export function App() {
 
   return (
     <>
-      <CssBaseline enableColorScheme />
-      <Typography variant="h4" component="h1" p={2} color="transparent">
-        Welcome!
-      </Typography>
-      <Grid container pl={4}>
-        <Grid item xs={11} md={9} lg={11}>
-          <Outlet />
-        </Grid>
-        <Grid item xs={5} md={3}>
-          <CityInputForm />
-        </Grid>
-      </Grid>
+      <h1>Welcome!</h1>
+      <Outlet />
+      <CityInputForm />
     </>
   );
 }

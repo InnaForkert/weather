@@ -1,4 +1,4 @@
-import { CurrentWeatherObj } from "../redux/features/weather/weatherSlice";
+import { CurrentWeatherObj } from "../../redux/features/weather/weatherSlice";
 
 import {
   LineChart,

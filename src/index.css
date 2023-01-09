@@ -9,3 +9,7 @@
 .hidden-form {
   transform: translateX(-90%);
 }
+
+body {
+  background-color: #e0b1cb !important;
+}
