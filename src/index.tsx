@@ -7,6 +7,7 @@ import { createHashRouter, RouterProvider } from "react-router-dom";
 import { ErrorPage } from "./components/ErrorPage";
 import { Details } from "./components/Details";
 import { WeatherCards } from "./components/WeatherCards";
+import "./index.css";
 
 export const router = createHashRouter([
   {

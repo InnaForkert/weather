@@ -1,15 +1,16 @@
-import { Button, Grid, Paper, TextField } from "@mui/material";
 import React, { useState } from "react";
 
-import { addCity } from "../redux/features/cityList/cityListSlice";
-import { useAppSelector, useAppDispatch } from "../redux/utils/hooks";
-import { fetchWeather } from "../redux/utils/getWeather";
+import { addCity } from "../../redux/features/cityList/cityListSlice";
+import { useAppSelector, useAppDispatch } from "../../redux/utils/hooks";
+import { fetchWeather } from "../../redux/utils/getWeather";
+
 import Notiflix from "notiflix";
+
+import { Form, Input, Submit, Label } from "./CityInputForm.styled";
 
 export function CityInputForm() {
   const [cityName, setCityName] = useState("");
   const values = useAppSelector((state) => state.weather.values);
-
   const dispatch = useAppDispatch();
 
   function handleInput(e: React.FormEvent<HTMLDivElement>) {
@@ -25,6 +26,7 @@ export function CityInputForm() {
       Notiflix.Notify.failure("Enter Something!");
       return;
     }
+
     const cityCapitalized =
       cityName.length > 1
         ? cityName.toLowerCase()[0].toUpperCase() +
@@ -44,27 +46,22 @@ export function CityInputForm() {
   }
 
   return (
-    <Paper sx={{ position: "fixed", right: "5%", top: "11%" }} elevation={3}>
-      <form onSubmit={(e) => saveCity(e)} aria-label="search city form">
-        <Grid container direction="column" spacing={2} p={2}>
-          <Grid item>
-            <TextField
-              id="outlined-basic"
-              label="Enter city name"
-              variant="outlined"
-              value={cityName}
-              onInput={(e) => handleInput(e)}
-              role="input"
-              inputProps={{ "data-testid": "content-input" }}
-            />
-          </Grid>
-          <Grid item>
-            <Button variant="contained" type="submit">
-              Save
-            </Button>
-          </Grid>
-        </Grid>
-      </form>
-    </Paper>
+    <Form
+      onSubmit={(e: React.FormEvent) => saveCity(e)}
+      aria-label="search city form"
+    >
+      <Input
+        id="cityName"
+        value={cityName}
+        onInput={(e: React.FormEvent<HTMLDivElement>) => handleInput(e)}
+        role="input"
+        inputProps={{ "data-testid": "content-input" }}
+        placeholder=" "
+      />
+      <Label for="cityName">Enter city name</Label>
+      <Submit variant="contained" type="submit">
+        Save
+      </Submit>
+    </Form>
   );
 }

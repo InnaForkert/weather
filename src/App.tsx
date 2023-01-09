@@ -8,7 +8,7 @@ import { Outlet, useLocation } from "react-router-dom";
 
 import CssBaseline from "@mui/material/CssBaseline";
 
-import { CityInputForm } from "./components/CityInputForm";
+import { CityInputForm } from "./components/CityInputForm/CityInputForm";
 import { Grid, Typography } from "@mui/material";
 
 export const LocationDisplay = () => {

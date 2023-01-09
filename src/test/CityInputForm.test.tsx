@@ -1,7 +1,7 @@
 import { fireEvent, screen } from "@testing-library/react";
 import { renderWithProviders } from "../redux/utils/testUtils";
 
-import { CityInputForm } from "../components/CityInputForm";
+import { CityInputForm } from "../components/CityInputForm/CityInputForm";
 
 type TestElement = Document | Element | Window | Node;
 
